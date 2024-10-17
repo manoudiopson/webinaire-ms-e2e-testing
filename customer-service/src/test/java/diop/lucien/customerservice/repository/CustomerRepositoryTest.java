@@ -53,7 +53,7 @@ class CustomerRepositoryTest {
         );
         List<Customer> result = customerRepository.findByFirstNameContainsIgnoreCase(keyword);
         assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.size()).isEqualTo(expected.size());
         assertThat(result).usingRecursiveComparison().ignoringFields("id").isEqualTo(expected);
     }
 }
