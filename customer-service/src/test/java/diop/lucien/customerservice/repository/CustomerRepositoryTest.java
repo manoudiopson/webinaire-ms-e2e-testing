@@ -1,7 +1,6 @@
 package diop.lucien.customerservice.repository;
 
 import diop.lucien.customerservice.entities.Customer;
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,7 @@ class CustomerRepositoryTest {
                 Customer.builder().firstName("Lucien").lastName("DIOP").email("lucienemmanueld@gmail.com").build(),
                 Customer.builder().firstName("Marie").lastName("Artis").email("marie.artis53d@gmail.com").build()
         );
-        List<Customer> result = customerRepository.findByFirstNameContainsIgnoreCase(keyword);
+        List<Customer> result = customerRepository.findByFirstNameContainingIgnoreCase(keyword);
         assertThat(result).isNotNull();
         assertThat(result.size()).isEqualTo(expected.size());
         assertThat(result).usingRecursiveComparison().ignoringFields("id").isEqualTo(expected);
